@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>新闻</title>
+  <link rel="stylesheet" href="./css/resetnew.css">
+  <link rel="stylesheet" href="./css/new.css">
+  <script src="./js/pc/jquery-2.2.0.min.js"></script>
+  <script src="./js/pc/new.js"></script>
+  <script>
+    $(function () {
+      // $('.m_right').hide();
+      // $('.m_right').eq(2).show();
+    });
+    
+    $(function () {
+      getNewsList(1,'rdhdList1','total1')
+    });
+    
+  </script>
+</head>
+
+<body>
+  <!-- 头部模块 -->
+  <div class="header">
+    <div class="head" id="index">
+      <div class="h_box w">
+        <a href="javascript:;">
+          <h1>
+            <img src="./img/news/logo.png" alt="">
+          </h1>
+        </a>
+      </div>
+
+      <!-- 头部导航模块 -->
+      <ul class="nav w">
+        <li data-id="1">
+          <a href="javascript:;">
+            <img src="./img/news/1.png" alt="">
+            <span>首页</span>
+            <div></div>
+          </a>
+        </li>
+        <li data-id="2">
+          <a href="javascript:;">
+            <img src="./img/news/2.png" alt=""><br>
+            <span>新闻</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友会快讯</a>
+            <a>母校新闻</a>
+            <a>通知预告</a>
+            <a>校友动态</a>
+          </p>
+        </li>
+        <li data-id="3">
+          <a href="javascript:;">
+            <img src="./img/news/3.png" alt="">
+            <span>校友会</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友会简介</a>
+            <a>校友会章程</a>
+            <a>组织机构</a>
+            <a>备案组织</a>
+          </p>
+        </li>
+        <li data-id="4">
+          <a href="javascript:;">
+            <img src="./img/news/4.png" alt="">
+            <span>人物</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友访谈</a>
+            <a>校友风采</a>
+            <a>学子风采</a>
+            <a>行业精英</a>
+          </p>
+        </li>
+        <li data-id="5">
+          <a href="javascript:;">
+            <img src="./img/news/5.png" alt="">
+            <span>回忆</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友心声</a>
+            <a>校园风采</a>
+            <a>南航旧闻</a>
+          </p>
+        </li>
+        <li data-id="6">
+          <a href="javascript:;">
+            <img src="./img/news/6.png" alt="">
+            <span>服务</span>
+            <div></div>
+          </a>
+          <p>
+            <a>返校预约</a>
+            <a>办事指南</a>
+            <a>文件下载</a>
+            <a>纪念礼品</a>
+          </p>
+        </li>
+        <li data-id="7">
+          <a href="javascript:;">
+            <img src="./img/news/7.png" alt="">
+            <span>刊物</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友通讯</a>
+            <a>校友刊物</a>
+          </p>
+        </li>
+        <li data-id="8">
+          <a href="javascript:;">
+            <img src="./img/news/8.png" alt="">
+            <span>捐赠</span>
+            <div></div>
+          </a>
+          <p>
+            <a>捐赠项目</a>
+            <a>捐赠平台</a>
+            <a>鸣谢</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /头部模块 -->
+
+  <!-- 中间内容模块 -->
+  <div class="content ">
+    <div class="c_title">
+      <div class="w">
+        <span>2015年11月17日 星期二 17:28:21</span>
+      </div>
+    </div>
+    <div class="c_middle w">
+      <div class="m_left">
+        <img src="./img/news/new-0.png" alt="">
+        <span>新闻</span>
+        <ul>
+          <li data-id="0" class="color">
+            <span></span>
+            <span>热点活动</span>
+          </li>
+          <li data-id="1">
+            <span></span>
+            <span>校友活动</span>
+          </li>
+          <li data-id="2">
+            <span></span>
+            <span>活动预告</span>
+          </li>
+          <li data-id="3">
+            <span></span>
+            <span>校友心声</span>
+          </li>
+          <li data-id="4">
+            <span></span>
+            <span>校友访谈</span>
+          </li>
+        </ul>
+        <!-- <div class="division_0"> </div>
+        <div class="division_1"> </div>
+        <div class="division_2"> </div>
+        <div class="division_3"> </div> -->
+      </div>
+
+      <div class="m_right" data-id="0">
+        <div class="r_title">
+          <div>
+            <img src="./img/news/plant.png" alt="">
+          </div>
+          <span>当前位置 : 首页 - 新闻 - 热点活动</span>
+        </div>
+        <ul id="rdhdList1">
+          <!-- <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li> -->
+        </ul>
+
+        <div class="r_bottom ">
+          <span id="total1">共0条记录</span>
+          <span>首页</span>
+          <span>上一页</span>
+          <span>1</span>
+          <span style="display: none;">2</span>
+          <span style="display: none;">3</span>
+          <span style="display: none;">4</span>
+          <span style="display: none;">5</span>
+          <span>下一页</span>
+          <span>末页</span>
+          <span>当前[1/1]页</span>
+          <span>到第
+            <select name="" id="">
+              <option value="">1</option>
+            </select> 页
+          </span>
+        </div>
+      </div>
+      <div class="m_right" data-id="1">
+        <div class="r_title">
+          <div>
+            <img src="./img/news/plant.png" alt="">
+          </div>
+          <span>当前位置 : 首页 - 新闻 - 校友活动</span>
+        </div>
+        <ul id="rdhdList2">
+          <!-- <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li> -->
+
+        </ul>
+        <div class="r_bottom ">
+          <span id="total2">共0条记录</span>
+          <span>首页</span>
+          <span>上一页</span>
+          <span>1</span>
+          <span style="display: none;">2</span>
+          <span style="display: none;">3</span>
+          <span style="display: none;">4</span>
+          <span style="display: none;">5</span>
+          <span>下一页</span>
+          <span>末页</span>
+          <span>当前[1/1]页</span>
+          <span>到第
+            <select name="" id="">
+              <option value="">1</option>
+            </select> 页
+          </span>
+        </div>
+      </div>
+      <div class="m_right" data-id="2">
+        <div class="r_title">
+          <div>
+            <img src="./img/news/plant.png" alt="">
+          </div>
+          <span>当前位置 : 首页 - 新闻 - 活动预告</span>
+        </div>
+        <ul id="rdhdList3">
+          <!-- <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <h5>所属: <i>南京航空航天大学两校区、南京市区 </i> </h5>
+                <h5>地点: <i>南京航空航天大学校友会</i> </h5>
+              </div>
+              <div>
+                <span class="sign sign-color">报名</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <h5>所属: <i>南京航空航天大学两校区、南京市区 </i> </h5>
+                <h5>地点: <i>南京航空航天大学校友会</i> </h5>
+              </div>
+              <div>
+                <span class="sign">结束</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <h5>所属: <i>南京航空航天大学两校区、南京市区 </i> </h5>
+                <h5>地点: <i>南京航空航天大学校友会</i> </h5>
+              </div>
+              <div>
+                <span class="sign">结束</span>
+              </div>
+            </a>
+          </li> -->
+        </ul>
+        <div class="r_bottom ">
+          <span id="total3">共0条记录</span>
+          <span>首页</span>
+          <span>上一页</span>
+          <span>1</span>
+          <span style="display: none;">2</span>
+          <span style="display: none;">3</span>
+          <span style="display: none;">4</span>
+          <span style="display: none;">5</span>
+          <span>下一页</span>
+          <span>末页</span>
+          <span>当前[1/1]页</span>
+          <span>到第
+            <select name="" id="">
+              <option value="">1</option>
+            </select> 页
+          </span>
+        </div>
+      </div>
+      <div class="m_right" data-id="3">
+        <div class="r_title">
+          <div>
+            <img src="./img/news/plant.png" alt="">
+          </div>
+          <span>当前位置 : 首页 - 新闻 - 校友心声</span>
+        </div>
+        <ul id="rdhdList4">
+          <!-- <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li> -->
+        </ul>
+        <div class="r_bottom ">
+          <span id="total4">共0条记录</span>
+          <span>首页</span>
+          <span>上一页</span>
+          <span>1</span>
+          <span style="display: none;">2</span>
+          <span style="display: none;">3</span>
+          <span style="display: none;">4</span>
+          <span style="display: none;">5</span>
+          <span>下一页</span>
+          <span>末页</span>
+          <span>当前[1/1]页</span>
+          <span>到第
+            <select name="" id="">
+              <option value="">1</option>
+            </select> 页
+          </span>
+        </div>
+      </div>
+      <div class="m_right" data-id="4">
+        <div class="r_title">
+          <div>
+            <img src="./img/news/plant.png" alt="">
+          </div>
+          <span>当前位置 : 首页 - 新闻 - 校友访谈</span>
+        </div>
+        <ul id="rdhdList5">
+          <!-- <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <div>
+                <span>09月</span>
+                <span>13</span>
+                <span>2018</span>
+              </div>
+              <div>
+                <h4>南京航空航天大学深港澳校友会2018年度迎新暨校友大会隆重举行"</h4>
+                <p>8月11日，南京航空航天大学深港澳校友会2018年度迎新暨校友大会在深圳市市民中心隆重举行。副校长黄志球，发展联络部部长闾浩，资产经营公司总经理阎雷、副总经理杨波、四川校友..."</p>
+              </div>
+            </a>
+          </li> -->
+        </ul>
+        <div class="r_bottom ">
+          <span id="total5">共0条记录</span>
+          <span>首页</span>
+          <span>上一页</span>
+          <span>1</span>
+          <span style="display: none;">2</span>
+          <span style="display: none;">3</span>
+          <span style="display: none;">4</span>
+          <span style="display: none;">5</span>
+          <span>下一页</span>
+          <span>末页</span>
+          <span>当前[1/1]页</span>
+          <span>到第
+            <select name="" id="">
+              <option value="">1</option>
+            </select> 页
+          </span>
+        </div>
+      </div>
+  </div>
+
+  </div>
+  <!-- /中间内容模块 -->
+
+  <!-- 服务大厅 -->
+  <div class="service">
+    <div>
+      <a href="javascript:;">
+        <p>服务大厅</p>
+        <div class="hover" data-id="29">
+          <img src="./img/news/29 - 1.png" alt="">
+        </div>
+      </a>
+    </div>
+    <div>
+      <a href="javascript:;">
+        <p>QQ邮箱</p>
+        <div class="hover" data-id="30">
+          <img src="./img/news/30 - 1.png" alt="">
+        </div>
+      </a>
+    </div>
+    <div>
+      <a href="#index">
+        <p>返回顶部</p>
+        <div class="hover" data-id="31">
+          <img src="./img/news/31 - 1.png" alt="">
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- /服务大厅 -->
+
+  <!-- 底部模块 -->
+  <div class="footer">
+    <ul class="w">
+      <li>
+        <img src="./img/news/公众号.png" alt="">
+        <span>公众号</span>
+      </li>
+      <li>
+        <img src="./img/news/南航官网.png" alt="">
+        <span>南航官网</span>
+      </li>
+      <li>
+        <img src="./img/news/基金会.png" alt="">
+        <span>基金会</span>
+      </li>
+      <li>
+        <p>校内链接</p>
+        <div>
+          <img src="./img/news/50.png" alt="">
+          <img src="./img/news/51.png" alt="">
+        </div>
+      </li>
+      <li>
+        <p>其他校友网链接</p>
+        <div>
+          <img src="./img/news/52.png" alt="">
+          <img src="./img/news/53.png" alt="">
+        </div>
+      </li>
+      <li>
+        <p></p>
+        <div>
+          <img src="./img/news/52.png" alt="">
+          <img src="./img/news/53.png" alt="">
+        </div>
+      </li>
+      <li>
+        <p></p>
+        <div>
+          <img src="./img/news/52.png" alt="">
+          <img src="./img/news/53.png" alt="">
+        </div>
+      </li>
+      <li>
+        <p></p>
+        <div>
+          <img src="./img/news/52.png" alt="">
+          <img src="./img/news/53.png" alt="">
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- /底部模块 -->
+</body>
+
+</html>

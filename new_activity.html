@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/resetnew.css">
+  <link rel="stylesheet" href="./css/swiper.min.css">
+  <link rel="stylesheet" href="./css/new_activity.css">
+  <script src="./js/pc/jquery-2.2.0.min.js"></script>
+  <script src="./js/pc/swiper.min.js"></script>
+  <script src="./js/pc/new_activity.js"></script>
+  <script>
+    var baseurl="http://192.168.1.105:8089/xyhweb-admin";
+    $(function () {
+      getactivitydetail()
+    });
+    // 获取活动详情的方法
+    function getactivitydetail() {
+      $.ajax({
+        type:"POST",
+        async:false,
+        url:baseurl+"/queryAcitivityInfo",
+        data:{"actId":1},
+        dataType:'json',
+        contentType:'application/x-www-form-urlencoded',
+        success:function(data){
+          console.log(data);
+          
+        }
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <!-- 头部模块 -->
+  <div class="header">
+    <div class="head" id="index">
+      <div class="h_box w">
+        <a href="javascript:;">
+          <h1>
+            <img src="./img/news/logo.png" alt="">
+          </h1>
+        </a>
+      </div>
+
+      <!-- 头部导航模块 -->
+      <ul class="nav w">
+        <li data-id="1">
+          <a href="javascript:;">
+            <img src="./img/news/1.png" alt="">
+            <span>首页</span>
+            <div></div>
+          </a>
+        </li>
+        <li data-id="2">
+          <a href="javascript:;">
+            <img src="./img/news/2.png" alt=""><br>
+            <span>新闻</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友会快讯</a>
+            <a>母校新闻</a>
+            <a>通知预告</a>
+            <a>校友动态</a>
+          </p>
+        </li>
+        <li data-id="3">
+          <a href="javascript:;">
+            <img src="./img/news/3.png" alt="">
+            <span>校友会</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友会简介</a>
+            <a>校友会章程</a>
+            <a>组织机构</a>
+            <a>备案组织</a>
+          </p>
+        </li>
+        <li data-id="4">
+          <a href="javascript:;">
+            <img src="./img/news/4.png" alt="">
+            <span>人物</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友访谈</a>
+            <a>校友风采</a>
+            <a>学子风采</a>
+            <a>行业精英</a>
+          </p>
+        </li>
+        <li data-id="5">
+          <a href="javascript:;">
+            <img src="./img/news/5.png" alt="">
+            <span>回忆</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友心声</a>
+            <a>校园风采</a>
+            <a>南航旧闻</a>
+          </p>
+        </li>
+        <li data-id="6">
+          <a href="javascript:;">
+            <img src="./img/news/6.png" alt="">
+            <span>服务</span>
+            <div></div>
+          </a>
+          <p>
+            <a>返校预约</a>
+            <a>办事指南</a>
+            <a>文件下载</a>
+            <a>纪念礼品</a>
+          </p>
+        </li>
+        <li data-id="7">
+          <a href="javascript:;">
+            <img src="./img/news/7.png" alt="">
+            <span>刊物</span>
+            <div></div>
+          </a>
+          <p>
+            <a>校友通讯</a>
+            <a>校友刊物</a>
+          </p>
+        </li>
+        <li data-id="8">
+          <a href="javascript:;">
+            <img src="./img/news/8.png" alt="">
+            <span>捐赠</span>
+            <div></div>
+          </a>
+          <p>
+            <a>捐赠项目</a>
+            <a>捐赠平台</a>
+            <a>鸣谢</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /头部模块 -->
+
+  <!-- 中间内容模块 -->
+  <div class="content ">
+    <div class="c_title">
+      <div class="w">
+        <span>2015年11月17日 星期二 17:28:21</span>
+      </div>
+    </div>
+    <div class="c_middle w">
+
+      <div class="m_left">
+        <img src="./img/news/new-0.png" alt="">
+        <span>活动</span>
+        <ul>
+          <li data-id="0">
+            <span></span>
+            <span>校友会快讯</span>
+          </li>
+          <li data-id="1">
+            <span></span>
+            <span>母校新闻</span>
+          </li>
+          <li data-id="2" class="color">
+            <span></span>
+            <span>通知预告</span>
+          </li>
+          <li data-id="3">
+            <span></span>
+            <span>校友动态</span>
+          </li>
+        </ul>
+        <div class="division_0"> </div>
+        <div class="division_1"> </div>
+        <div class="division_2"> </div>
+        <div class="division_3"> </div>
+      </div>
+
+      <div class="m_right">
+        <div class="r_title">
+          <div>
+            <img src="./img/news/plant.png" alt="">
+          </div>
+          <span>当前位置 : 首页 - 新闻 - 校友会快讯</span>
+        </div>
+        <div class="r_detail">
+          <h4>2016年校友子女航空文化夏令营活动"</h4>
+          <p>
+            <span>2018-09-18</span>
+            <span>|</span>
+            <span>来源：校友会</span>
+            <span>|</span>
+            <span>作者：张阿三</span>
+            <span>|</span>
+            <span>
+              <img src="./img/news/new-9.png" alt="">
+            </span>
+            <span>32</span>
+          </p>
+          <div class="r_article">
+            <div>
+              <img src="./img/news/new-2.png" alt="">
+            </div>
+            <div>
+              <span>发起人：校友总会</span>
+              <span>组织人：闾浩</span>
+              <span>活动类型：工作会议</span>
+              <span>开始时间：2018-06-05</span>
+              <span>结束时间：2018-06-05</span>
+              <span>报名截止时间：2018-06-01</span>
+              <span>活动地址：南京市航空航天大学校内</span>
+            </div>
+            <div>
+              <div>
+                <img src="./img/news/new-3.png" alt="">
+              </div>
+              <span>立即报名</span>
+            </div>
+          </div>
+          <ul class="r_activity">
+            <li class="active" data-id="0">活动详情</li>
+            <li data-id="1">活动总结</li>
+            <li data-id="2">参加人员</li>
+            <li data-id="3">其他参加人员</li>
+            <li></li>
+          </ul>
+          <div class="list">
+            <div class="item">
+              <h4>一、 活动目的</h4>
+              <span>为使校友子女更全面深入地了解父辈母校南京航空航天大学及大学学习生活，帮助校友子女开拓视野、学习知识、增长才干，让更多的青少年体验到航空航天科技的魅力，校友总会每年暑期举办以“感恩青春，相约南航，共筑航空梦”为主题的校友子女夏令营文化交流活动。</span>
+              <span>参训营员可通过参观体验、专题现场讲座、亲自动手实践，在专业国家级教练的指导下制作并体验简易航模飞行，了解飞行器的飞行原理和飞机构造，在夏令营闭营仪式上颁发证书。</span>
+              <h4>二、主办单位：</h4>
+              <span>南京航空航天大学校友会</span>
+              <h4>三、活动对象：</h4>
+              <span>1.目标对象:我校校友子女</span>
+              <span>学员要求：12-17周岁的青少年，其直系亲属为我校校友，身体健康，本人有一定的生活自理能力和集体生活经验，组织纪律性强。</span>
+              <span class="note">营员应在入营前一天按规定时间报到，并在规定的解散时间按时返程，届时将有志愿者统一接送。活动全程均有志愿者和老师陪同。
+              </span>
+            </div>
+            <div class="item">
+              <h4>一、 活动总结</h4>
+
+            </div>
+            <div class="item">
+              <h4>一、 参加人员</h4>
+              <span>为使校友子女更全面深入地了解父辈母校南京航空航天大学及大学学习生活，帮助校友子女开拓视野、学习知识、增长才干，让更多的青少年体验到航空航天科技的魅力，校友总会每年暑期举办以“感恩青春，相约南航，共筑航空梦”为主题的校友子女夏令营文化交流活动。</span>
+
+            </div>
+            <div class="item">
+              <h4>一、 其他参加人员</h4>
+              <span>为使校友子女更全面深入地了解父辈母校南京航空航天大学及大学学习生活，帮助校友子女开拓视野、学习知识、增长才干，让更多的青少年体验到航空航天科技的魅力，校友总会每年暑期举办以“感恩青春，相约南航，共筑航空梦”为主题的校友子女夏令营文化交流活动。</span>
+              
+            </div>
+
+          </div>
+          <div class="scan">
+            <div class="s_title">
+              <img src="./img/news/new-4.png" alt="">
+              <span>活动掠影</span>
+              <i></i>
+            </div>
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="./img/news/new-5.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="./img/news/new-6.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="./img/news/new-7.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="./img/news/new-8.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="./img/news/new-5.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="./img/news/new-6.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="./img/news/new-7.png" alt="">
+                </div>
+              </div>
+              <!-- Add Pagination -->
+              <!-- <div class="swiper-pagination"></div> -->
+              <!-- Add Arrows -->
+              <div class="swiper-button-next next"></div>
+              <div class="swiper-button-prev prev"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="c_bottom w">
+      <span>返回</span>
+    </div>
+  </div>
+  <!-- /中间内容模块 -->
+
+  <!-- 服务大厅 -->
+  <div class="service">
+    <div>
+      <a href="javascript:;">
+        <p>服务大厅</p>
+        <div class="hover" data-id="29">
+          <img src="./img/news/29 - 1.png" alt="">
+        </div>
+      </a>
+    </div>
+    <div>
+      <a href="javascript:;">
+        <p>QQ邮箱</p>
+        <div class="hover" data-id="30">
+          <img src="./img/news/30 - 1.png" alt="">
+        </div>
+      </a>
+    </div>
+    <div>
+      <a href="#index">
+        <p>返回顶部</p>
+        <div class="hover" data-id="31">
+          <img src="./img/news/31 - 1.png" alt="">
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- /服务大厅 -->
+
+  <!-- 底部模块 -->
+  <div class="footer">
+    <ul class="w">
+      <li>
+        <img src="./img/news/公众号.png" alt="">
+        <span>公众号</span>
+      </li>
+      <li>
+        <img src="./img/news/南航官网.png" alt="">
+        <span>南航官网</span>
+      </li>
+      <li>
+        <img src="./img/news/基金会.png" alt="">
+        <span>基金会</span>
+      </li>
+      <li>
+        <p>校内链接</p>
+        <div>
+          <img src="./img/news/50.png" alt="">
+          <img src="./img/news/51.png" alt="">
+        </div>
+      </li>
+      <li>
+        <p>其他校友网链接</p>
+        <div>
+          <img src="./img/news/52.png" alt="">
+          <img src="./img/news/53.png" alt="">
+        </div>
+      </li>
+      <li>
+        <p></p>
+        <div>
+          <img src="./img/news/52.png" alt="">
+          <img src="./img/news/53.png" alt="">
+        </div>
+      </li>
+      <li>
+        <p></p>
+        <div>
+          <img src="./img/news/52.png" alt="">
+          <img src="./img/news/53.png" alt="">
+        </div>
+      </li>
+      <li>
+        <p></p>
+        <div>
+          <img src="./img/news/52.png" alt="">
+          <img src="./img/news/53.png" alt="">
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- /底部模块 -->
+</body>
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+</html>

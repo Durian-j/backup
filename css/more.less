@@ -1,0 +1,197 @@
+// 头部模块
+.header {
+    position: relative;
+    // margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(13, 129, 220, 0.6);
+    background-color: #117ecd;
+    z-index: 8;
+    >.head{
+        >.nav{
+          position: relative;
+          height: 112px;
+          z-index: 5;
+          // logo
+          >.logo {
+            width: 320px;
+            height: 61px;
+            // background-color: #ffffff;
+            margin-top: 26px;
+          }
+          // 头部标题模块
+          ul{
+            margin-left: 560px;
+            position: relative;
+            overflow: hidden;
+            >li{
+              margin-top: 29px;
+              float: left;
+              width: 97px;
+              height: 83px; 
+              text-align: center;
+              position: relative;
+              >a{      
+                display: inline-block;
+                text-align: center;    
+                width: 97px;
+                height: 27px;
+                // line-height: 41px;
+                border-right: 1px dashed #fff;
+                font-family: MicrosoftYaHei;
+                font-size: 18px;
+                color: #ffffff;
+                margin-top: 18px;
+                >.small{
+                    font-size: 12px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    color: #ffffff;
+                    width: 97px;
+                    display: inline-block;
+                    // margin-top:-10px;
+                    position: absolute;
+                    top: 48px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+              }
+              &:nth-child(5){
+                width: 150px;
+                >a{
+                  width: 150px;
+                }
+              }
+              &:nth-child(6){
+                z-index: 2;
+                // width: 20px;
+                height: 3px;
+                margin: 0;
+                position: absolute;
+                top: 93px;
+                left: 0px;
+                width: 97px;
+                >div{
+                  width: 97px;
+                  height: 3px;
+                  background-color: #f0bf57;
+                }
+              }
+            }
+          }
+          >.ul-active{
+            z-index: 2;
+            background-color: black;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 20px;
+            height: 10px;
+          }
+          // 右上角小图标
+          >.smallBox{
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #ffffff;
+            >span{
+              width: 48px;
+              height: 14px;
+              font-family: MicrosoftYaHei;
+              font-size: 14px;
+              font-weight: normal;
+              font-stretch: normal;
+              line-height: 41px;
+              letter-spacing: 0px;
+              color: #ffffff;
+              >img{
+                color: #ffffff;
+                  width: 14px;
+                  height: 14px;
+                  margin-right: 12px;
+              }
+            }
+            >#btn {
+              color: #000;
+              margin-right: 15px;
+              height: 20px;
+              border-radius: 20px;
+              padding-left: 15px;
+              font-size: 12px;
+              // display: inline-block;
+            }
+          }
+        }
+    } 
+}
+
+// banner
+.banner {
+  >img {
+    width: 100%;
+  }
+}
+
+  // 内容区域
+.content {
+height: 311px;
+
+}
+//底部模块
+.footer{
+  // width: 1920px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 188px;
+  margin: 0 auto;
+  >img {
+    margin: 0 auto;
+    width: 100%;
+  }
+  >.footer-box {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    >.footer-left{
+      margin-top: 76px;
+        width: 258px;
+        height: 85px;
+        font-family: MicrosoftYaHei;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0px;
+        color: #ffffff;
+        >.address{
+          margin-bottom: 24px;
+        }
+    }
+    >.footer-right{
+      margin-top: 76px;
+      width: 258px;
+      height: 85px;
+      >.pic-code {
+        >div {
+          width: 340px;
+          height: 43px;
+          >img{
+            float: right;
+            display: block;
+          }
+        }
+      }
+      >.copyright{
+        text-align: right;
+        width: 340px;
+        height: 31px;
+        font-family: MicrosoftYaHei;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0px;
+        color: #ffffff;
+      }
+    }
+  }
+}

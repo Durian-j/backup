@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/more.css">
+    <script src="./js/pc/jquery-2.2.0.min.js"></script>
+    <script src="./js/pc/UrlParams.js"></script>
+    <script type="text/javascript">
+        var newsId = "";
+        $(document).ready(function(){
+            newsId =UrlParm.parm("id");
+            initInfo();
+        });
+
+
+        //初始化活动数据
+        function initInfo() {
+            $.ajax({
+                type:"POST",
+                async:false,
+                url:"queryNewsInfo",
+                data:{"newsId":newsId},
+                dataType:'json',
+                contentType:'application/x-www-form-urlencoded',
+                success:function(data){
+                    var json = eval(data);
+                    var content = $("#content");
+                    content.empty();
+                    var html = "</br></br></br>";
+                    html = html + "<h2 style='text-align: center;'>"+json.title+"</h2>";
+                    html = html + "</br></br></br></br>";
+                    html = html +"<div style='margin-left: 10%;margin-right: 10%;'>"+ json.text+"</div>";
+                    content.append(html);
+                }
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <div class="head w">
+            <!-- 头部 -->
+            <div class="nav w">
+                <div class="logo fl">
+                    <h3>
+                        <a href="#">
+                            <img src="./img/index/logo.png" alt="">
+                        </a>
+                    </h3>
+                </div>
+                <!--<ul>
+                    <li>
+                        <a href="#">
+                            <span>首页</span>
+                            <span class="small">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">联系
+                            <span class="small">Contact</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">服务
+                            <span class="small">Service</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">回馈
+                            <span class="small">Give back</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">纪念品管理
+                            <span class="small">Souvenirs</span>
+                        </a>
+                    </li> -->
+                    <!-- 点击时获取的样式，可以通过 left 控制位置 -->
+                    <!-- <li>
+                        <img src="./images/index/menu_select.png" alt="">
+                        <div></div>
+                    </li>
+                </ul>-->
+                <!-- 浮动控制的小模块 -->
+                <div href="javscript:;" class="smallBox">
+                    <input type="text" id="btn" style="display:none" placeholder="请输入内容">
+                    <span class="">
+                        <span class="search">
+                            <img src="./img/index/search.png" alt="">
+                        </span>
+                        <span ><a style="color: #ffffff;" href="pcMain.html">南航首页</a> </span>
+                    </span> |
+                    <span>
+                        <img src="./img/index/English.png" alt="">English
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner -->
+	<div class="banner">
+        <img src="./img/more/bg.png" alt="">
+    </div>
+
+    <!-- 内容 -->
+    <div class="content" id="content">
+        
+    </div>
+
+    <!-- 底部模块 -->
+    <div class="footer">
+            <img src="./img/index/bottom.png" alt="">
+        <div class="footer-box w">
+            <div class="footer-left fl">
+                <p class="address">
+                    <span>明故宫校区：江苏省南京市秦淮区御道街29号</span>
+                    <span>邮政编码: 210016</span>
+                </p>
+                <p>
+                    <span>将军路校区：江苏省南京市江宁区将军大道29号</span>
+                    <span>邮政编码: 211106</span>
+                </p>
+            </div>
+            <div class="footer-right fr">
+                <div class="pic-code">
+                    <div class="">
+                        <img src="./img/index/code.png" alt="">
+                    </div>
+                </div>
+                <div class="copyright clearfix">
+                    <p>
+                        <span>版权所有：南京航空航天大学 ALL RIGHTS RESERVED</span>
+                        <span>苏ICP备05070685号</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

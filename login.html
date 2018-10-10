@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>后台管理平台 - 主页</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <!--<link rel="shortcut icon" href="favicon.ico">-->
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.1.0" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.min.css">
+    <link href="js/plugins/layer/skin/layer.css" rel="stylesheet">
+</head>
+<body>
+<div class="login-body">
+    <div class="login-logo">
+        <img src="img/login-logo.png" alt="南京航空航天大学">
+    </div>
+    <div class="signin">
+        <div class="signin-left img-responsive">
+            <img src="img/background02.jpg" alt="南京航空航天大学">
+        </div>
+        <div class="signin-right col-lg-12">
+            <div class="signin-right-logo">
+                <img src="img/logo02.jpg" alt="">
+            </div>
+            <div class="kuai"></div>
+            <form role="form" id="signupForm" action="login" onsubmit="loginSubmit();" method="post">
+                <div class="form-group">
+                    <!--<input type="email" class="form-input user-name" placeholder="用户名" required="">-->
+                    <i class="icon user-name"></i>
+                    <input id="gh" name="gh" class="form-input" type="text" placeholder="用户名" aria-required="true" aria-invalid="true" class="error">
+                </div>
+                <div class="form-group">
+                    <!--<input type="password" class="form-input user-pwd" placeholder="密码" required="">-->
+                    <i class="icon user-pwd"></i>
+                    <input id="password" name="password" class="form-input" placeholder="密码" type="password">
+                </div>
+                <button id="login" type="submit" class="btn btn-blue block full-width m-b">登 录</button>
+            </form>
+            <!--<div class="signin-right-footer">-->
+                <!--<img src="img/background03.png" alt="">-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="login-footer">
+        <p>版权所有：南京航空航天大学 ALL RIGHTS RESERVED    <span>苏ICP备05070685号</span></p>
+    </div>
+</div>
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/plugins/layer/layer.min.js"></script>
+<script src="js/md5.js"></script>
+<script src="js/alumni/login.js"></script>
+</body>
+</html>

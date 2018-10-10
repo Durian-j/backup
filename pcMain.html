@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/mainPage/reset.css">
+    <link rel="stylesheet" href="./css/mainPage/swiper.min.css">
+    <link rel="stylesheet" href="./css/mainPage/carrousel.css">
+    <link rel="stylesheet" href="./css/mainPage/index.css">
+    <script src="./js/pc/swiper.min.js"></script>
+    <script src="./js/pc/jquery-2.2.0.min.js"></script>
+    <script src="./js/pc/carrousel.js"></script>
+    <script src="./js/pc/index.js"></script>
+    <script type="text/javascript">
+        var baseurl="http://192.168.1.105:8089/xyhweb-admin";
+        $(function () {
+            // initDate();
+            // getImg();
+            // getactivity();
+        });
+        //初始化首页数据
+        function initDate() {
+            $.ajax({
+                type:"POST",
+                async:false,
+                url:baseurl+"/initWebNews",
+                data:{"newsId":""},
+                dataType:'json',
+                contentType:'application/x-www-form-urlencoded',
+                success:function(data){
+                    console.log(data);
+                   var rdhd = eval(data.rdhd);
+                    fillNews(rdhd,"rddtList","newsRightTop");
+                   var xyhd = eval(data.xyhd);
+                    fillNews(xyhd,"xyhdList","newsRightTop");//newsBottomTop
+                   var hdyg = eval(data.hdyg);
+                   var xyxs = eval(data.xyxs);
+                   var xyft = eval(data.xyft);
+                    
+                    //content.append(html);
+                }
+            });
+        }
+
+        //页面新闻信息具体填充
+        function fillNews(jsonData,id,topId) {
+            var json = jsonData[0];
+            var top = $("#"+topId);
+            top.empty();
+            var topHtml = "";
+            var text = $(json.text);
+            var context = text.text();
+            if(context.length>60){
+                context = context.substring(0,30)+"..";
+            }
+            topHtml = topHtml + "<div class='detail_time'>" +
+                "<div class='detail_box'>"+json.day+"</div>" +
+                "<span>"+json.yeartime+"</span>" +
+                "</div>" +
+                "<h4>"+json.title+"</h4>" +
+                "<p>"+context+"</p>";
+            top.append(topHtml);
+            var doc = $("#"+id);
+            doc.empty();
+            var html = "";
+            for(var i=1;i<jsonData.length;i++){
+                var json = jsonData[i];
+                html = html + "<li>"+
+                   "<a href=\"javascript:;\">" +
+                    "<i style='display:none'>"+json.id+"</i>" +
+                    "<img src='./img/mainPage/19.png' alt=''>" +
+                    "<span onclick='watchnew(event)'>"+json.title+"</span>" +
+                    "<i>"+json.fulltime+"</i>" +
+                    "</a>"+
+                "</li>";
+            }
+            doc.append(html);
+        }
+
+        // 获取首页4格图片
+        function getImg(){
+            $.ajax({
+                type:"POST",
+                async:false,
+                url:baseurl+"/queryTopImage",
+                dataType:'json',
+                contentType:'application/x-www-form-urlencoded',
+                success:function(data){
+                    var conhtml='<img id="defaultTopImg" src="'+data.imgData[0].topImgUrl+'" alt="">';
+                    var conhtml2=''
+                    for(let i=0;i<data.imgData.length;i++){
+                        var json=data.imgData[i];
+                        if(i==0){
+                            conhtml=conhtml+
+                            '<span id="topImgTit'+(i+1)+'">'+json.title+'</span>'
+                        }else{
+                            conhtml=conhtml+
+                            '<span style="display: none" id="topImgTit'+(i+1)+'">'+json.title+'</span>'
+                        }
+                        conhtml2=conhtml2+
+                        '<img id="topImgt'+(i+1)+'" src="'+json.topImgUrl+'" data-id="'+i+'" alt="">'
+                    }
+                    $('#topImage').html(conhtml);
+                    $('#topImage2').html(conhtml2);
+                }
+            });
+        }
+        // 查看三级新闻列表
+        function watchnew(e){
+            let newsId = e.target.parentNode.firstChild.innerText;
+            window.location.href = "./new_detail.html?newsId="+newsId;
+        }
+        // 查看更多新闻
+        function watchmore(){
+            window.location.href = "./new.html";
+        }
+        // 查看活动详情
+        function watchactivity(e){
+            console.log(e.target.firstChild.innerText);
+            // window.location.href = "./new_activity.html";
+        }
+        // 首页活动展示
+        function getactivity(){
+            $.ajax({
+                type:"POST",
+                async:false,
+                url:baseurl+"/initActivity",
+                dataType:'json',
+                contentType:'application/x-www-form-urlencoded',
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+<!-- 头部模块 -->
+<div class="header">
+    <div class="head" id="index">
+        <div class="h_box w">
+            <a href="javascript:;">
+                <h1>
+                    <img src="./img/mainPage/logo.png" alt="">
+                </h1>
+            </a>
+        </div>
+
+        <!-- 头部导航模块 -->
+        <ul class="nav w">
+            <li data-id="1">
+                <a href="javascript:;">
+                    <img src="./img/mainPage/1.png" alt="">
+                    <span>首页</span>
+                    <div></div>
+                </a>
+            </li>
+            <li data-id="2">
+                <a href="javascript:;">
+                    <img src="./img/mainPage/2.png" alt=""><br>
+                    <span>新闻</span>
+                    <div></div>
+                </a>
+                <p>
+                    <a>热点动态</a>
+                    <a>校友动态</a>
+                    <a>活动预告</a>
+                    <a>通知预告</a>
+                </p>
+            </li>
+            <li data-id="3">
+                <a href="javascript:;">
+                    <img src="./img/mainPage/3.png" alt="">
+                    <span>校友会</span>
+                    <div></div>
+                </a>
+                <p>
+                    <a>校友会简介</a>
+                    <a>校友会章程</a>
+                    <a>组织机构</a>
+                    <a>备案组织</a>
+                </p>
+            </li>
+            <li data-id="4">
+                <a href="javascript:;">
+                    <img src="./img/mainPage/4.png" alt="">
+                    <span>人物</span>
+                    <div></div>
+                </a>
+                <p>
+                    <a>校友访谈</a>
+                    <a>校友风采</a>
+                    <a>学子风采</a>
+                    <a>行业精英</a>
+                </p>
+            </li>
+            <li data-id="5">
+                <a href="javascript:;">
+                    <img src="./img/mainPage/5.png" alt="">
+                    <span>回忆</span>
+                    <div></div>
+                </a>
+                <p>
+                    <a>校友心声</a>
+                    <a>校园风采</a>
+                    <a>南航旧闻</a>
+                </p>
+            </li>
+            <li data-id="6">
+                <a href="javascript:;">
+                    <img src="./img/mainPage/6.png" alt="">
+                    <span>服务</span>
+                    <div></div>
+                </a>
+                <p>
+                    <a>返校预约</a>
+                    <a>办事指南</a>
+                    <a>文件下载</a>
+                    <a>纪念礼品</a>
+                </p>
+            </li>
+            <li data-id="7">
+                <a href="javascript:;">
+                    <img src="./img/mainPage/7.png" alt="">
+                    <span>刊物</span>
+                    <div></div>
+                </a>
+                <p>
+                    <a>校友通讯</a>
+                    <a>校友刊物</a>
+                </p>
+            </li>
+            <li data-id="8">
+                <a href="javascript:;">
+                    <img src="./img/mainPage/8.png" alt="">
+                    <span>捐赠</span>
+                    <div></div>
+                </a>
+                <p>
+                    <a>捐赠项目</a>
+                    <a>捐赠平台</a>
+                    <a>鸣谢</a>
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /头部模块 -->
+
+<!-- 校友动态 -->
+<div class="dynamic w">
+    <div class="d_time">
+        2015年11月17日 星期二 17:28:21
+    </div>
+    <div class="d_box">
+
+        <div class="d_left">
+            <div class="show" id="topImage">
+                <img id="defaultTopImg" src="./img/mainPage/11.png" alt="">
+                <span id="topImgTit1">机器人世界杯中国赛在合肥举行</span>
+                <span style="display: none" id="topImgTit2">2</span>
+                <span style="display: none" id="topImgTit3">3</span>
+                <span style="display: none" id="topImgTit4">4</span>
+            </div>
+            <div class="list" id="topImage2">
+                <img id="topImgt1" src="./img/mainPage/12.png" data-id="0" alt="">
+                <img id="topImg2" src="./img/mainPage/13.png" data-id="1" alt="">
+                <img id="topImg3" src="./img/mainPage/14.png" data-id="2" alt="">
+                <img id="topImg4" src="./img/mainPage/15.png" data-id="3" alt="">
+            </div>
+        </div>
+
+        <div class="d_right">
+            <!-- 右边头部 -->
+            <div class="d_title">
+                <span class="tab active" data-id="0">热点动态</span>
+                <span class="tab" data-id="1">校友动态</span>
+                <span onclick="watchmore()">更多 ></span>
+                <i></i>
+            </div>
+
+            <!-- 右边底部 -->
+            <div class="d_content">
+                <div class="d_detail" id="newsRightTop">
+                    <!--<div class="detail_time">
+                        <div class="detail_box">12</div>
+                        <span>2017-04</span>
+                    </div>
+                    <h4>南京航空航天大学四川地区校友会召开理事会换届会议1</h4>
+                    <p>换届大会在激扬的校歌中拉开序幕。四川校友会第一届理事会会长戴亚隆作上一届理事会工作报告，他回顾了四川校友会成立以来的主要工作..."</p>-->
+                </div>
+                <!-- 热点动态列表 -->
+                <div class="d_list" >
+                    <ul id="rddtList">
+                        <!--<li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>-->
+                    </ul>
+                    <!-- 校友动态列表 -->
+                    <ul id="xyhdList">
+                        <!--<li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士1212</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <img src="./img/mainPage/19.png" alt="">
+                                <span>我校校友吴光辉当选中国工程院院士我工程院院士</span>
+                                <i>2015-11-03</i>
+                            </a>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /校友动态 -->
+
+<!-- 校友联系 -->
+<div class="contact">
+    <div class="c_box w">
+        <div class="c_left">
+            <!-- 头部 -->
+            <div class="c_title">
+                <span class="c_tab active" data-id="0">活动预告</span>
+                <span class="c_tab" data-id="1">校友心声</span>
+                <span class="c_tab" data-id="2">校友访谈</span>
+                <span onclick="watchmore()">更多 ></span>
+                <i></i>
+            </div>
+            <div class="c_detail" id="newsBottomTop">
+                <div class="detail_time">
+                    <span>JULY</span>
+                    <span>12</span>
+                </div>
+                <img src="./img/mainPage/21.png" alt="" class="arrow">
+                <img src="./img/mainPage/22.png" alt="" class="line">
+                <h4>南京航空航天大学四川地区校友会召开理事会换届会议</h4>
+                <p>换届大会在激扬的校歌中拉开序幕。四川校友会第一届理事会会长戴亚隆作上一届理事会工作报告，他回顾了四川校友会成立以来的主要工作..."</p>
+            </div>
+            <div class="tab_item">
+                <ul id="hdygList">
+                    <li>
+                        <a href="javascript:;">
+                            <span>南京航空航天大学四川地区校友会召开理事会换届会</span>
+                            <span>2019-09-01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <span>南京航空航天大学四川地区校友会召开理事会换届会</span>
+                            <span>2019-09-01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <span>南京航空航天大学四川地区校友会召开理事会换届会</span>
+                            <span>2019-09-01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <span>南京航空航天大学四川地区校友会召开理事会换届会</span>
+                            <span>2019-09-01</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul id="xyxsList">
+                    <li>
+                        <a href="javascript:;">
+                            <span>南京航空航天大学四川地区校友会召开理事会换届会</span>
+                            <span>2019-09-01</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul id="xyftList">
+                    <li>
+                        <a href="javascript:;">
+                            <span>南京航空航天大学四川地区校友会召开理事会换届会</span>
+                            <span>2019-09-01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <span>南京航空航天大学四川地区校友会召开理事会换届会</span>
+                            <span>2019-09-01</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="c_right">
+            <div class="c_top">
+                <div class="login">
+                    <img src="./img/mainPage/23.png" alt="">
+                    <p>校友会登陆</p>
+                </div>
+                <div class="c_from">
+                    <input type="text" class="c_input username" placeholder="请输入用户名">
+                    <img src="./img/mainPage/25.png" alt="" class="u_img">
+                    <input type="button" class="f_login btn" value="登陆">
+                    <input type="password" class="c_input" placeholder="请输入密码">
+                    <img src="./img/mainPage/26.png" alt="" class="p_img">
+                    <input type="button" class="btn" value="注册">
+                    <!-- 验证码 -->
+                    <div class="confirm">
+                        <input type="text" name="" id="">
+                        <img src="./img/mainPage/27.png" alt="">
+                        <button>换一张</button>
+                    </div>
+                </div>
+            </div>
+            <div class="c_bottom">
+                <div class="c_contact">
+                    <img src="./img/mainPage/24.png" alt="">
+                    <p>联系我们</p>
+                </div>
+                <div class="c_address">
+                    <span>明故宫校区：江苏省南京市秦淮区御道街29号</span>
+                    <span>将军路校区：江苏省南京市江宁区将军大道29号</span>
+                    <span>邮编：210016</span>
+                    <span>电话：025-12345678</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /校友联系 -->
+
+<!-- 校友视频 -->
+<div class="video w">
+    <div class="v_left">
+        <div class="l_title">
+            <span>校友风采</span>
+            <span>更多</span>
+            <i></i>
+        </div>
+        <!-- 轮播图 -->
+        <div class="l_swiper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./img/mainPage/32.png" alt="">
+                        <div>
+                            <h4>陈达</h4>
+                            <h5>中国科学院院士</h5>
+                            <span>陈达，1937年7月22日出生于江苏省通州市，1963年毕业于清华大学工程物理系。历任总装备部西北核技术研究所助理研究员、研究员、研究室副主任、主任、研究所科技委主任..</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/mainPage/33.png" alt="">
+                        <div>
+                            <h4>陈达</h4>
+                            <h5>中国科学院院士</h5>
+                            <span>陈达，1937年7月22日出生于江苏省通州市，1963年毕业于清华大学工程物理系。历任总装备部西北核技术研究所助理研究员、研究员、研究室副主任、主任、研究所科技委主任..</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/mainPage/34.png" alt="">
+                        <div>
+                            <h4>陈达</h4>
+                            <h5>中国科学院院士</h5>
+                            <span>陈达，1937年7月22日出生于江苏省通州市，1963年毕业于清华大学工程物理系。历任总装备部西北核技术研究所助理研究员、研究员、研究室副主任、主任、研究所科技委主任..</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/mainPage/32.png" alt="">
+                        <div>
+                            <h4>陈达</h4>
+                            <h5>中国科学院院士</h5>
+                            <span>陈达，1937年7月22日出生于江苏省通州市，1963年毕业于清华大学工程物理系。历任总装备部西北核技术研究所助理研究员、研究员、研究室副主任、主任、研究所科技委主任..</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/mainPage/32.png" alt="">
+                        <div>
+                            <h4>陈达</h4>
+                            <h5>中国科学院院士</h5>
+                            <span>陈达，1937年7月22日出生于江苏省通州市，1963年毕业于清华大学工程物理系。历任总装备部西北核技术研究所助理研究员、研究员、研究室副主任、主任、研究所科技委主任..</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <!-- <div class="swiper-pagination"></div> -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        <div class="l_bottom">
+            <ul>
+                <li>
+                    <img src="./img/mainPage/43.png" alt="">
+                    <h4>返校预约</h4>
+                    <span>specific icon</span>
+                </li>
+                <li>
+                    <img src="./img/mainPage/44.png" alt="">
+                    <h4>发布活动</h4>
+                    <span>specific icon</span>
+                </li>
+                <li>
+                    <img src="./img/mainPage/45-1.png" alt="">
+                    <h4>校友圈子</h4>
+                    <span>specific icon</span>
+                </li>
+                <li>
+                    <img src="./img/mainPage/46.png" alt="">
+                    <h4>校友刊物</h4>
+                    <span>specific icon</span>
+                </li>
+                <li>
+                    <img src="./img/mainPage/47.png" alt="">
+                    <h4>校友捐赠</h4>
+                    <span>specific icon</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="v_right">
+        <div class="r_title">
+            <span>校友风采</span>
+            <span>更多</span>
+            <i></i>
+        </div>
+        <div class="r_box">
+            <div class="b_top">
+                <img src="./img/mainPage/38.png" alt="">
+                <div>
+                    <span>《青春燕园·归来仍少年——北京大学2018后c盛典》</span>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <img src="./img/mainPage/38-1.png" class="pause" alt="">
+                    <img src="./img/mainPage/39.png" alt="">
+                    <span>《青春燕园·归来仍少年——北京大学2018...</span>
+                </li>
+                <li>
+                    <img src="./img/mainPage/38-1.png" class="pause" alt="">
+                    <img src="./img/mainPage/39.png" alt="">
+                    <span>《青春燕园·归来仍少年——北京大学2018...</span>
+                </li>
+                <li>
+                    <img src="./img/mainPage/38-1.png" class="pause" alt="">
+                    <img src="./img/mainPage/39.png" alt="">
+                    <span>《青春燕园·归来仍少年——北京大学2018...</span>
+                </li>
+                <li>
+                    <img src="./img/mainPage/38-1.png" class="pause" alt="">
+                    <img src="./img/mainPage/39.png" alt="">
+                    <span>《青春燕园·归来仍少年——北京大学2018...</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<!-- /校友视频 -->
+
+<!-- 校友活动 -->
+<div class="activity">
+    <div class="a_box w">
+        <div class="a_top">
+            <h4>校友活动，汇聚你我</h4>
+            <p>Alumni Activities, You And Me</p>
+        </div>
+
+        <div class="middle">
+            <ul>
+                <li>
+                    <div class="bg"></div>
+                    <div class="">
+                        <h4>2018-06-11</h4>
+                        <p>2016年校友子女航空文化夏令营活动</p>
+                        <img src="./img/mainPage/img01.png" alt="">
+                        <div onclick="watchactivity(event)" style="width: 240px;height: 280px;position: absolute;top: -22px;left: -37px;cursor: pointer;"><div style="display: none;">1</div></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bg rotate1"></div>
+                    <div class=" c1">
+                        <h4>2018-06-11</h4>
+                        <p>2016年校友子女航空文化夏令营活动</p>
+                        <img src="./img/mainPage/img02.png" alt="">
+                        <div onclick="watchactivity(event)" style="width: 240px;height: 280px;position: absolute;top: -22px;left: -37px;cursor: pointer;"><div style="display: none;">2</div></div>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="bg rotate2"></div>
+                    <div class=" c2">
+                        <h4>2018-06-11</h4>
+                        <p>2016年校友子女航空文化夏令营活动</p>
+                        <img src="./img/mainPage/img03.png" alt="">
+                        <div onclick="watchactivity(event)" style="width: 240px;height: 280px;position: absolute;top: -22px;left: -37px;cursor: pointer;"><div style="display: none;">3</div></div>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="bg rotate3"></div>
+                    <div class=" c3">
+                        <h4>2018-06-11</h4>
+                        <p>2016年校友子女航空文化夏令营活动</p>
+                        <img src="./img/mainPage/img04.png" alt="">
+                        <div onclick="watchactivity(event)" style="width: 240px;height: 280px;position: absolute;top: -22px;left: -37px;cursor: pointer;"><div style="display: none;">4</div></div>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="bg rotate4"></div>
+                    <div class=" c4">
+                        <h4>2018-06-11</h4>
+                        <p>2016年校友子女航空文化夏令营活动</p>
+                        <img src="./img/mainPage/img05.png" alt="">
+                        <div onclick="watchactivity(event)" style="width: 240px;height: 280px;position: absolute;top: -22px;left: -37px;cursor: pointer;"><div style="display: none;">5</div></div>
+                    </div>
+                </li>
+                <li class="">
+                    <div class="bg rotate5"></div>
+                    <div class=" c5">
+                        <h4>2018-06-11</h4>
+                        <p>2016年校友子女航空文化夏令营活动</p>
+                        <img src="./img/mainPage/img03.png" alt="">
+                        <div onclick="watchactivity(event)" style="width: 240px;height: 280px;position: absolute;top: -22px;left: -37px;cursor: pointer;"><div style="display: none;">6</div></div>
+                    </div>
+                </li>
+                <li >
+                    <div class="bg"></div>
+                    <div class="">
+                        <h4>2018-06-11</h4>
+                        <p>2016年校友子女航空文化夏令营活动</p>
+                        <img src="./img/mainPage/img02.png" alt="">
+                        <div onclick="watchactivity(event)" style="width: 240px;height: 280px;position: absolute;top: -22px;left: -37px;cursor: pointer;"><div style="display: none;">7</div></div>
+                    </div>
+                </li>
+                <li >
+                    <div class="bg"></div>
+                    <div class="">
+                        <h4>2018-06-11</h4>
+                        <p>2016年校友子女航空文化夏令营活动</p>
+                        <img src="./img/mainPage/img01.png" alt="">
+                        <div onclick="watchactivity(event)" style="width: 240px;height: 280px;position: absolute;top: -22px;left: -37px;cursor: pointer;"><div style="display: none;">8</div></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="a_bottom">
+            <div class="time_line">
+                <div class="range"></div>
+            </div>
+            <ul class="time">
+                <li data-id="0"><span>2018-09</span></li>
+                <li data-id="1"><span>2018-09</span></li>
+                <li data-id="2"><span>2018-09</span></li>
+                <li data-id="3"><span>2018-09</span></li>
+                <li data-id="4"><span>2018-09</span></li>
+                <li data-id="5"><span>2018-09</span></li>
+                <li data-id="6"><span>2018-09</span></li>
+                <li data-id="7"><span>2018-09</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /校友活动 -->
+
+<!-- 服务大厅 -->
+<div class="service">
+    <div>
+        <a href="javascript:;">
+            <p>服务大厅</p>
+            <div class="hover" data-id="29">
+                <img src="./img/mainPage/29 - 1.png" alt="">
+            </div>
+        </a>
+    </div>
+    <div>
+        <a href="javascript:;">
+            <p>QQ邮箱</p>
+            <div class="hover" data-id="30">
+                <img src="./img/mainPage/30 - 1.png" alt="">
+            </div>
+        </a>
+    </div>
+    <div>
+        <a href="#index">
+            <p>返回顶部</p>
+            <div class="hover" data-id="31">
+                <img src="./img/mainPage/31 - 1.png" alt="">
+            </div>
+        </a>
+    </div>
+</div>
+<!-- /服务大厅 -->
+
+<!-- 校园风光 -->
+<div class="scenery">
+    <div class="s_box w">
+        <h4>校园风光</h4>
+        <p>Campus scenery</p>
+        <img src="./img/mainPage/48.png" alt="">
+    </div>
+</div>
+<!-- /校园风光 -->
+
+<!-- 底部模块 -->
+<div class="footer">
+    <ul class="w">
+        <li>
+            <img src="img/mainPage/gjh.png" alt="">
+            <span>公众号</span>
+        </li>
+        <li>
+            <img src="img/mainPage/nhgw.png" alt="">
+            <span>南航官网</span>
+        </li>
+        <li>
+            <img src="img/mainPage/jjh.png" alt="">
+            <span>基金会</span>
+        </li>
+        <li>
+            <p>校内链接</p>
+            <div>
+                <img src="./img/mainPage/50.png" alt="">
+                <img src="./img/mainPage/51.png" alt="">
+            </div>
+        </li>
+        <li>
+            <p>其他校友网链接</p>
+            <div>
+                <img src="./img/mainPage/52.png" alt="">
+                <img src="./img/mainPage/53.png" alt="">
+            </div>
+        </li>
+        <li>
+            <p></p>
+            <div>
+                <img src="./img/mainPage/52.png" alt="">
+                <img src="./img/mainPage/53.png" alt="">
+            </div>
+        </li>
+        <li>
+            <p></p>
+            <div>
+                <img src="./img/mainPage/52.png" alt="">
+                <img src="./img/mainPage/53.png" alt="">
+            </div>
+        </li>
+        <li>
+            <p></p>
+            <div>
+                <img src="./img/mainPage/52.png" alt="">
+                <img src="./img/mainPage/53.png" alt="">
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- /底部模块 -->
+</body>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    $('#dg-container').carrousel({
+        current: 0,
+        autoplay: true,
+        interval: 3000
+    });
+</script>
+
+</html>
