@@ -331,19 +331,6 @@
   margin-right: 24px;
   cursor: pointer;
 }
-.content > .c_middle > .m_right > .r_bottom > span:nth-of-type(11) {
-  margin-right: 14px;
-}
-.content > .c_middle > .m_right > .r_bottom > span:nth-of-type(12) {
-  margin-right: 14px;
-  cursor: pointer;
-}
-.content > .c_middle > .m_right > .r_bottom > span:nth-of-type(12) > select {
-  width: 48px;
-  height: 20px;
-  cursor: pointer;
-  text-align: center;
-}
 .content > .c_middle > .m_right:nth-of-type(3) {
   display: none;
 }

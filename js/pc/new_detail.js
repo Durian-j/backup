@@ -20,12 +20,15 @@ $(function () {
   
   // 点击切换左边边区域
   $('.m_left').on('click','li',function () {  
-    console.log($(this).attr('data-id'));
-    console.log($('.m_right'));
+    // console.log($(this).attr('data-id'));
+    // console.log($('.m_right'));
+    var nowId = ($(this).attr('data-id'))-0+1;
+    window.location.href = "./new.html?mod="+nowId;
 
     $('.m_left li').removeClass('color');
     $(this).addClass('color');
-    $(this).css('borderBottom',`solid 1px #e0e0df`)
+    $(this).css('borderBottom',`solid 1px #e0e0df`);
+
 
     // $('.m_right').hide();
     // $('.m_right').eq($(this).attr('data-id')).show();

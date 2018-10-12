@@ -15,20 +15,26 @@
   <script>
     var baseurl="http://192.168.1.105:8089/xyhweb-admin";
     $(function () {
-      getactivitydetail()
+      var actId = getUrlParam('actId');
+      getactivitydetail(actId)
     });
+    // 获取url中的id值
+    function getUrlParam(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+      var r = window.location.search.substr(1).match(reg); //匹配目标参数
+      if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
     // 获取活动详情的方法
-    function getactivitydetail() {
+    function getactivitydetail(actId) {
       $.ajax({
         type:"POST",
         async:false,
         url:baseurl+"/queryAcitivityInfo",
-        data:{"actId":1},
+        data:{"actId":actId},
         dataType:'json',
         contentType:'application/x-www-form-urlencoded',
         success:function(data){
           console.log(data);
-          
         }
       });
     }
@@ -161,7 +167,11 @@
         <img src="./img/news/new-0.png" alt="">
         <span>活动</span>
         <ul>
-          <li data-id="0">
+          <li data-id="0" class="color">
+            <span></span>
+            <span>活动详情</span>
+          </li>
+          <!-- <li data-id="0">
             <span></span>
             <span>校友会快讯</span>
           </li>
@@ -176,7 +186,7 @@
           <li data-id="3">
             <span></span>
             <span>校友动态</span>
-          </li>
+          </li> -->
         </ul>
         <div class="division_0"> </div>
         <div class="division_1"> </div>
@@ -189,7 +199,7 @@
           <div>
             <img src="./img/news/plant.png" alt="">
           </div>
-          <span>当前位置 : 首页 - 新闻 - 校友会快讯</span>
+          <span>当前位置 : 首页 - 活动 - 活动详情</span>
         </div>
         <div class="r_detail">
           <h4>2016年校友子女航空文化夏令营活动"</h4>
@@ -303,9 +313,9 @@
       </div>
     </div>
 
-    <div class="c_bottom w">
+    <!-- <div class="c_bottom w">
       <span>返回</span>
-    </div>
+    </div> -->
   </div>
   <!-- /中间内容模块 -->
 

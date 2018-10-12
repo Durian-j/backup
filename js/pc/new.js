@@ -21,7 +21,7 @@ $(function () {
   // 点击切换左边边区域
   $('.m_left').on('click','li',function () {  
     var nowId = ($(this).attr('data-id'))-0+1;
-    getNewsList(nowId,('rdhdList'+nowId),('total'+nowId))
+    getNewsList(nowId,('rdhdList'+nowId),('total'+nowId),1)
     // console.log($('.m_right'));
 
     $('.m_left li').removeClass('color');
@@ -34,12 +34,12 @@ $(function () {
 });
 var baseurl="http://192.168.1.105:8089/xyhweb-admin";
 // 获取新闻列表的方法
-function getNewsList(newsType,conmodule,total) {
+function getNewsList(newsType,conmodule,total,pagenum) {
   $.ajax({
     type:"POST",
     async:false,
     url:baseurl+"/queryNewsListForLevel2Page",
-    data:{"newsType":newsType,"pageNum":1},
+    data:{"newsType":newsType,"pageNum":pagenum},
     dataType:'json',
     contentType:'application/x-www-form-urlencoded',
     success:function(data){
@@ -70,6 +70,7 @@ function getNewsList(newsType,conmodule,total) {
       }
       $('#'+conmodule).html(conhtml);
       $('#'+total).text('共'+data.num+'条记录');
+      // $('.totalPage')[3].innerText='共计 '+data.num+' 条数据'
     }
   });
 }

@@ -17,9 +17,9 @@
     <script type="text/javascript">
         var baseurl="http://192.168.1.105:8089/xyhweb-admin";
         $(function () {
-            // initDate();
-            // getImg();
-            // getactivity();
+            initDate();
+            getImg();
+            getactivity();
         });
         //初始化首页数据
         function initDate() {
@@ -115,12 +115,12 @@
         }
         // 查看更多新闻
         function watchmore(){
-            window.location.href = "./new.html";
+            window.location.href = "./new.html?mod=1";
         }
         // 查看活动详情
         function watchactivity(e){
-            console.log(e.target.firstChild.innerText);
-            // window.location.href = "./new_activity.html";
+            let actId = e.target.firstChild.innerText;
+            window.location.href = "./new_activity.html?actId="+actId;
         }
         // 首页活动展示
         function getactivity(){

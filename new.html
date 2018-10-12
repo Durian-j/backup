@@ -8,17 +8,48 @@
   <title>新闻</title>
   <link rel="stylesheet" href="./css/resetnew.css">
   <link rel="stylesheet" href="./css/new.css">
+  <link rel="stylesheet" href="./css/myPagination.css">
+  <script src="./js/pc/myPagination.js"></script>
   <script src="./js/pc/jquery-2.2.0.min.js"></script>
   <script src="./js/pc/new.js"></script>
   <script>
+    // $(function () {
+    //   // $('.m_right').hide();
+    //   // $('.m_right').eq(2).show();
+    // });
     $(function () {
-      // $('.m_right').hide();
-      // $('.m_right').eq(2).show();
+      var mod = getUrlParam('mod');
+      if(mod==null){mod=1}
+      getNewsList(mod,'rdhdList1','total1',1);
+      $('.m_left li').removeClass('color');
+      $('#guide'+mod).addClass('color');
+      
+      new Page({
+        id: 'pagination1',
+        pageTotal: 3, //必填,总页数
+        pageAmount: 10,  //每页多少条
+        dataTotal: 500, //总共多少条数据
+        curPage:1, //初始页码,不填默认为1
+        pageSize: 10, //分页个数,不填默认为5
+        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+        getPage: function (page) {
+          //获取当前页数
+          getNewsList(mod,'rdhdList1','total1',page);
+        }
+      })
+
+
     });
-    
-    $(function () {
-      getNewsList(1,'rdhdList1','total1')
-    });
+    // 获取url中的id值
+    function getUrlParam(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+      var r = window.location.search.substr(1).match(reg); //匹配目标参数
+      if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+    function test(){
+      return 1
+    }
     
   </script>
 </head>
@@ -148,23 +179,23 @@
         <img src="./img/news/new-0.png" alt="">
         <span>新闻</span>
         <ul>
-          <li data-id="0" class="color">
+          <li data-id="0" class="color" id="guide1">
             <span></span>
             <span>热点活动</span>
           </li>
-          <li data-id="1">
+          <li data-id="1" id="guide2">
             <span></span>
             <span>校友活动</span>
           </li>
-          <li data-id="2">
+          <li data-id="2" id="guide3">
             <span></span>
             <span>活动预告</span>
           </li>
-          <li data-id="3">
+          <li data-id="3" id="guide4">
             <span></span>
             <span>校友心声</span>
           </li>
-          <li data-id="4">
+          <li data-id="4" id="guide5">
             <span></span>
             <span>校友访谈</span>
           </li>
@@ -315,7 +346,7 @@
           </li> -->
         </ul>
 
-        <div class="r_bottom ">
+        <!-- <div class="r_bottom ">
           <span id="total1">共0条记录</span>
           <span>首页</span>
           <span>上一页</span>
@@ -332,7 +363,17 @@
               <option value="">1</option>
             </select> 页
           </span>
+        </div> -->
+        <div class="box">
+          <div class="info fl">
+            <!-- <span id="total1">共0条记录</span>
+            <span>当前页数：<span id="current1">1</span></span> -->
+          </div>
+          <!-- <div id="pagination1" class="page fl"></div> -->
+          <span id="total1" style="float: left;color: #0075ca;margin: 5px 20px 5px">共0条记录</span>
+          <div id="pagination1" class="pagination"></div>
         </div>
+
       </div>
       <div class="m_right" data-id="1">
         <div class="r_title">
@@ -357,7 +398,7 @@
           </li> -->
 
         </ul>
-        <div class="r_bottom ">
+        <!-- <div class="r_bottom ">
           <span id="total2">共0条记录</span>
           <span>首页</span>
           <span>上一页</span>
@@ -374,6 +415,10 @@
               <option value="">1</option>
             </select> 页
           </span>
+        </div> -->
+        <div class="box">
+          <span id="total2" style="float: left;color: #0075ca;margin: 5px 20px 5px">共0条记录</span>
+          <div id="pagination2" class="pagination"></div>
         </div>
       </div>
       <div class="m_right" data-id="2">
@@ -436,7 +481,7 @@
             </a>
           </li> -->
         </ul>
-        <div class="r_bottom ">
+        <!-- <div class="r_bottom ">
           <span id="total3">共0条记录</span>
           <span>首页</span>
           <span>上一页</span>
@@ -453,6 +498,10 @@
               <option value="">1</option>
             </select> 页
           </span>
+        </div> -->
+        <div class="box">
+          <span id="total3" style="float: left;color: #0075ca;margin: 5px 20px 5px">共0条记录</span>
+          <div id="pagination3" class="pagination"></div>
         </div>
       </div>
       <div class="m_right" data-id="3">
@@ -503,7 +552,7 @@
             </a>
           </li> -->
         </ul>
-        <div class="r_bottom ">
+        <!-- <div class="r_bottom ">
           <span id="total4">共0条记录</span>
           <span>首页</span>
           <span>上一页</span>
@@ -520,6 +569,10 @@
               <option value="">1</option>
             </select> 页
           </span>
+        </div> -->
+        <div class="box">
+          <span id="total4" style="float: left;color: #0075ca;margin: 5px 20px 5px">共0条记录</span>
+          <div id="pagination4" class="pagination"></div>
         </div>
       </div>
       <div class="m_right" data-id="4">
@@ -570,7 +623,7 @@
             </a>
           </li> -->
         </ul>
-        <div class="r_bottom ">
+        <!-- <div class="r_bottom ">
           <span id="total5">共0条记录</span>
           <span>首页</span>
           <span>上一页</span>
@@ -587,6 +640,10 @@
               <option value="">1</option>
             </select> 页
           </span>
+        </div> -->
+        <div class="box">
+          <span id="total5" style="float: left;color: #0075ca;margin: 5px 20px 5px">共0条记录</span>
+          <div id="pagination5" class="pagination"></div>
         </div>
       </div>
   </div>

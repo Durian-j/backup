@@ -185,6 +185,9 @@
   color: #0075ca;
   font-size: 26px;
   margin-bottom: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .content > .c_middle > .m_right > .r_detail > div > span {
   font-size: 12px;
